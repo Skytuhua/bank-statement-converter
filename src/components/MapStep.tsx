@@ -46,7 +46,11 @@ export function MapStep({ api }: { api: ConverterApi }) {
       <Card className="p-5">
         {/* CSV reading options */}
         <div className="flex flex-wrap items-end gap-5">
-          <Field label="Delimiter" htmlFor="delimiter">
+          <Field
+            label="Delimiter"
+            htmlFor="delimiter"
+            hint="The character between columns — auto-detected."
+          >
             <Select
               id="delimiter"
               value={state.delimiter}

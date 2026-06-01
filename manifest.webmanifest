@@ -1,0 +1,18 @@
+{
+  "name": "bank-statement-converter",
+  "short_name": "BankConvert",
+  "description": "Convert bank statement export files (CSV, OFX/QFX, QIF) between formats entirely in your browser. Nothing is uploaded.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#1e40af",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

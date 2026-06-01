@@ -20,7 +20,7 @@ import {
   type FileFormat,
   type ParseResult,
 } from '../core/model'
-import { readFileSmart } from '../lib/readFile'
+import { readFileSmart, describeUnsupportedFile } from '../lib/readFile'
 import { SAMPLE_CSV, SAMPLE_CSV_NAME } from '../lib/sample'
 
 export type Step = 'load' | 'map' | 'preview' | 'export'
@@ -98,7 +98,7 @@ export function useConverter() {
     const format = detectFormat(cleaned, name)
     if (format === 'unknown') {
       patch({
-        error: `Could not recognise "${name}" as CSV, OFX/QFX or QIF. Check the file and try again.`,
+        error: describeUnsupportedFile(name),
         parsing: false,
       })
       return
@@ -144,7 +144,10 @@ export function useConverter() {
         const text = await readFileSmart(file)
         ingest(text, file.name)
       } catch {
-        patch({ error: `Could not read "${file.name}".`, parsing: false })
+        patch({
+          error: `Could not read "${file.name}". The file may be empty or corrupted — please try downloading it from your bank again, or pick another file.`,
+          parsing: false,
+        })
       }
     },
     [ingest, patch],

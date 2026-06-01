@@ -31,3 +31,29 @@ export function hasAcceptedExtension(name: string): boolean {
   const lower = name.toLowerCase()
   return ACCEPTED_EXTENSIONS.some((ext) => lower.endsWith(ext))
 }
+
+// When a file isn't a recognised statement export, give a non-technical user a
+// message that explains the likely mistake and what to do next — instead of a
+// generic "unrecognised file". The most common mistakes are uploading a PDF or
+// scanned statement, a spreadsheet, or an image.
+export function describeUnsupportedFile(name: string): string {
+  const ext = name.toLowerCase().split('.').pop() ?? ''
+  const exports = 'a data-export file (CSV, OFX/QFX, or QIF)'
+
+  if (ext === 'pdf') {
+    return `"${name}" looks like a PDF. This tool converts ${exports}, not PDF or scanned statements. On your bank's website, look for "Export" or "Download" and choose CSV or OFX.`
+  }
+  if (['xls', 'xlsx', 'xlsm', 'numbers', 'ods'].includes(ext)) {
+    return `"${name}" looks like a spreadsheet. Open it in your spreadsheet app, then use "Save As" or "Export" to save a CSV — and load that file here.`
+  }
+  if (['png', 'jpg', 'jpeg', 'gif', 'heic', 'webp', 'bmp', 'tiff'].includes(ext)) {
+    return `"${name}" looks like an image. This tool needs ${exports} — not a screenshot or photo of a statement.`
+  }
+  if (['doc', 'docx', 'rtf', 'pages'].includes(ext)) {
+    return `"${name}" looks like a document. This tool needs ${exports} that you download from your bank, not a word-processor file.`
+  }
+  if (['zip', 'rar', '7z', 'gz'].includes(ext)) {
+    return `"${name}" is a compressed archive. Unzip it first, then load the CSV, OFX/QFX or QIF file inside.`
+  }
+  return `Could not recognise "${name}" as CSV, OFX/QFX or QIF. Make sure you're loading a data-export file from your bank (look for "Export" or "Download") — not a PDF or image.`
+}

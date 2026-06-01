@@ -45,3 +45,40 @@ A running journal of decisions, dead ends, and fixes.
   Tailwind v4 plugin, and Vitest (jsdom).
 - **Gate 3 baseline green:** `vitest run` passes a smoke test, `npm run build`
   produces a working bundle, `eslint .` is clean.
+
+## Phase 3.5 — UI/UX design system
+- Ran the full `ui-ux-pro-max` workflow from project root: analyze → MASTER.md →
+  per-page overrides (load/map/preview/export) → domain deep-dives (style,
+  color, typography, ux) → `--stack react` → synthesized `DESIGN_NOTES.md`.
+- Engine recommended **Minimalism/Swiss Style + IBM Plex Sans + trust-blue
+  #1E40AF**. The color domain surfaced a light-first "Banking/Traditional
+  Finance" palette better suited to dense financial tables, so light is the
+  primary mode (dark fully supported). Green/red reserved for inflow/outflow
+  semantics only (doesn't break the single-accent rule). Fonts self-hosted via
+  Fontsource so the tool works fully offline (zero runtime network).
+- Gate 3.5 passed: MASTER.md complete (pattern, hex colors, typography, spacing,
+  effects, anti-patterns, checklist), per-page overrides present, DESIGN_NOTES.md
+  written in own words.
+
+## Phase 4 — Build
+- Built pure `core/` layer first (model, normalize, fitid, detect, importers
+  csv/ofx/qif, exporters csv/ofx/qif, presets, convert) with 70 unit tests
+  (round-trips, EU decimals, debit/credit, edge cases) — all green.
+- Built the React UI: app shell + stepper (Load→Map→Preview→Export), dropzone
+  with drag/parse/error states, column-mapping form with live preview, dense
+  data table with totals + warnings filter, output presets + OFX account panel,
+  Blob download. Design-system primitives (Button/Select/Toggle/Card/etc.),
+  light/dark theme, self-hosted fonts, branded SVG favicon + PWA manifest.
+- Verified in a real browser via Playwright: full flow drives, OFX download is
+  valid well-formed XML, **network audit = 0 external requests**. Gate 4 met.
+
+## Phase 5 — Review & QA
+- Fanned out parallel review subagents (security/code-quality, edge-case
+  robustness, accessibility/design) + lead-as-adversarial-verifier. See
+  `review/REVIEW.md` for the full findings/fixes/evidence.
+- Fixed: CSV formula-injection guard, OFX amount parsing via parseAmount, OFX
+  XML control-char stripping, QIF 2-digit year, ACCTTYPE validation, detect mode
+  cleanup; a11y: file-input label, light-mode contrast tokens (WCAG AA),
+  375px stepper overflow, hint opacity.
+- Re-verified: 198 tests green, axe clean on 4 screens × 2 themes, no 375px
+  overflow, network audit PASS, fresh screenshots captured. Gate 5 met.

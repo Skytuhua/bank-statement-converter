@@ -1,3 +1,110 @@
 @import "tailwindcss";
 
-/* Design tokens are defined in Phase 3.5 (see DESIGN_NOTES.md). */
+/* Manual dark-mode toggle: `.dark` on <html> wins; otherwise system default
+   is applied via the prefers-color-scheme block below. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---- Design tokens (DESIGN_NOTES.md / design-system/MASTER.md) ---- */
+:root {
+  --background: #f8fafc;
+  --card: #ffffff;
+  --muted: #e8ecf1;
+  --muted-foreground: #64748b;
+  --foreground: #020617;
+  --heading: #0f172a;
+  --border: #e2e8f0;
+  --primary: #1e40af;
+  --primary-hover: #1d4ed8;
+  --on-primary: #ffffff;
+  --accent: #a16207;
+  --ring: #1e40af;
+  --inflow: #059669;
+  --outflow: #dc2626;
+  --destructive: #dc2626;
+  --shadow-card: 0 1px 2px rgb(2 6 23 / 0.06), 0 1px 3px rgb(2 6 23 / 0.10);
+}
+
+.dark {
+  --background: #0f172a;
+  --card: #0f1b33;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --foreground: #f8fafc;
+  --heading: #ffffff;
+  --border: rgb(255 255 255 / 0.10);
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --on-primary: #0b1220;
+  --accent: #d6a44c;
+  --ring: #3b82f6;
+  --inflow: #34d399;
+  --outflow: #f87171;
+  --destructive: #f87171;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 3px rgb(0 0 0 / 0.25);
+}
+
+/* Map semantic vars to Tailwind color/utility tokens. */
+@theme inline {
+  --color-background: var(--background);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-foreground: var(--foreground);
+  --color-heading: var(--heading);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-on-primary: var(--on-primary);
+  --color-accent: var(--accent);
+  --color-ring: var(--ring);
+  --color-inflow: var(--inflow);
+  --color-outflow: var(--outflow);
+  --color-destructive: var(--destructive);
+
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-card: 8px;
+  --radius-input: 6px;
+}
+
+@layer base {
+  html {
+    color-scheme: light dark;
+  }
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 {
+    color: var(--heading);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  /* Numbers should align in columns. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+  /* Always show a clear keyboard focus ring. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* Honour reduced-motion: disable non-essential transitions/animations. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

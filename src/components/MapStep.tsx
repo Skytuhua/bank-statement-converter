@@ -86,7 +86,7 @@ export function MapStep({ api }: { api: ConverterApi }) {
                   </option>
                 ))}
               </Select>
-              <span className="block truncate font-mono text-xs text-muted-foreground/80" title={sample[i] ?? ''}>
+              <span className="block truncate font-mono text-xs text-muted-foreground" title={sample[i] ?? ''}>
                 e.g. {sample[i] ? sample[i] : '—'}
               </span>
             </Field>

@@ -124,6 +124,20 @@ DATA:OFXSGML
     expect(transactions.map((t) => t.fitid)).toEqual(['A1', 'A2'])
   })
 
+  it('flags an empty TRNAMT instead of silently recording $0', () => {
+    const ofx = '<OFX><STMTTRN><DTPOSTED>20230115<FITID>Z1<NAME>No amount</STMTTRN></OFX>'
+    const { warnings } = importOfx(ofx)
+    expect(warnings.some((w) => w.field === 'amount')).toBe(true)
+  })
+
+  it('ignores an unknown ACCTTYPE rather than corrupting the account type', () => {
+    const ofx =
+      '<OFX><BANKACCTFROM><ACCTTYPE>WEIRD</BANKACCTFROM>' +
+      '<STMTTRN><DTPOSTED>20230115<TRNAMT>-1.00<FITID>Q1<NAME>x</STMTTRN></OFX>'
+    const { meta } = importOfx(ofx)
+    expect(meta?.accountType).toBeUndefined()
+  })
+
   it('uses the credit-card message set for CREDITCARD accounts', () => {
     const xml = exportOfx([{ date: '2023-01-15', amount: -5, payee: 'X', memo: '', fitid: 'F1' }], { accountType: 'CREDITCARD' })
     expect(xml).toContain('CREDITCARDMSGSRSV1')
@@ -152,6 +166,19 @@ describe('exportCsv via presets', () => {
   it('escapes fields containing commas', () => {
     const out = exportCsv(txns, getPreset('csv-generic').csv!)
     expect(out).toContain('"Coffee, Inc."')
+  })
+
+  it('neutralises CSV formula injection in text fields only', () => {
+    const evil: Transaction[] = [
+      { date: '2023-01-15', amount: -5, payee: '=HYPERLINK("http://evil")', memo: '@SUM(A1)', fitid: 'F1' },
+    ]
+    const out = exportCsv(evil, getPreset('csv-generic').csv!)
+    // Dangerous leading chars in text fields are prefixed with an apostrophe.
+    expect(out).toContain("'=HYPERLINK")
+    expect(out).toContain("'@SUM(A1)")
+    // The negative amount column is NOT mangled (leading '-' is legitimate).
+    expect(out).toContain('-5.00')
+    expect(out).not.toContain("'-5.00")
   })
 })
 

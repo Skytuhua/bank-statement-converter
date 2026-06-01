@@ -9,18 +9,21 @@
   --background: #f8fafc;
   --card: #ffffff;
   --muted: #e8ecf1;
-  --muted-foreground: #64748b;
+  /* slate-600: clears 4.5:1 on white AND on the muted surface */
+  --muted-foreground: #475569;
   --foreground: #020617;
   --heading: #0f172a;
   --border: #e2e8f0;
   --primary: #1e40af;
   --primary-hover: #1d4ed8;
   --on-primary: #ffffff;
-  --accent: #a16207;
+  --accent: #92580a;
   --ring: #1e40af;
-  --inflow: #059669;
-  --outflow: #dc2626;
-  --destructive: #dc2626;
+  /* emerald-700 / red-700: amount-semantic colours that still clear 4.5:1
+     as text on white and on tinted backgrounds in light mode */
+  --inflow: #047857;
+  --outflow: #b91c1c;
+  --destructive: #b91c1c;
   --shadow-card: 0 1px 2px rgb(2 6 23 / 0.06), 0 1px 3px rgb(2 6 23 / 0.10);
 }
 

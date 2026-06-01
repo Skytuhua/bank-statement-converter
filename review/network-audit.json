@@ -1,0 +1,6 @@
+{
+  "baseUrl": "http://127.0.0.1:4173/",
+  "totalRequests": 9,
+  "externalRequests": [],
+  "verdict": "PASS — no external requests"
+}

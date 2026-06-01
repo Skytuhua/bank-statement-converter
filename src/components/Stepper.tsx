@@ -26,21 +26,21 @@ export function Stepper({
   const highestIdx = steps.indexOf(highest)
 
   return (
-    <nav aria-label="Conversion steps" className="mx-auto max-w-[1120px] px-4 py-4 sm:px-6">
+    <nav aria-label="Conversion steps" className="mx-auto max-w-[1120px] px-3 py-4 sm:px-6">
       <ol className="flex items-center gap-1 sm:gap-2">
         {steps.map((step, i) => {
           const done = i < currentIdx
           const active = step === current
           const reachable = i <= highestIdx
           return (
-            <li key={step} className="flex flex-1 items-center gap-1 sm:gap-2">
+            <li key={step} className="flex min-w-0 flex-1 items-center gap-1 sm:gap-2">
               <button
                 type="button"
                 disabled={!reachable}
                 aria-current={active ? 'step' : undefined}
                 onClick={() => reachable && onJump(step)}
                 className={cx(
-                  'group flex items-center gap-2 rounded-[var(--radius-input)] px-2 py-1.5 transition-colors duration-150',
+                  'group flex min-w-0 items-center gap-1.5 rounded-[var(--radius-input)] px-1.5 py-1.5 transition-colors duration-150 sm:gap-2 sm:px-2',
                   reachable ? 'cursor-pointer' : 'cursor-not-allowed',
                   active ? 'text-foreground' : 'text-muted-foreground',
                   reachable && !active && 'hover:text-foreground',
@@ -56,12 +56,12 @@ export function Stepper({
                 >
                   {done ? <CheckIcon width={13} height={13} /> : i + 1}
                 </span>
-                <span className="text-sm font-medium">{LABELS[step]}</span>
+                <span className="truncate text-[0.8125rem] font-medium sm:text-sm">{LABELS[step]}</span>
               </button>
               {i < steps.length - 1 && (
                 <span
                   className={cx(
-                    'h-px flex-1 transition-colors duration-150',
+                    'hidden h-px flex-1 transition-colors duration-150 sm:block',
                     i < currentIdx ? 'bg-inflow/40' : 'bg-border',
                   )}
                 />

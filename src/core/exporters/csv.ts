@@ -12,14 +12,25 @@ export function csvEscape(value: string): string {
   return value
 }
 
+/**
+ * Neutralise CSV/formula injection: a text cell that begins with =, +, -, @,
+ * tab or CR can be executed as a formula if the CSV is opened in a spreadsheet.
+ * Prefix such cells with an apostrophe. Applied ONLY to free-text fields
+ * (payee/memo/category) — never to date/amount columns, where a leading '-'
+ * is legitimate data.
+ */
+export function guardFormula(value: string): string {
+  return /^[=+\-@\t\r]/.test(value) ? `'${value}` : value
+}
+
 function fieldValue(t: Transaction, field: CsvField, layout: CsvLayout): string {
   switch (field) {
     case 'date':
       return formatIsoDate(t.date, layout.dateFormat)
     case 'payee':
-      return t.payee
+      return guardFormula(t.payee)
     case 'memo':
-      return t.memo
+      return guardFormula(t.memo)
     case 'amount':
       return t.amount.toFixed(2)
     case 'outflow':
@@ -27,7 +38,7 @@ function fieldValue(t: Transaction, field: CsvField, layout: CsvLayout): string 
     case 'inflow':
       return t.amount > 0 ? t.amount.toFixed(2) : ''
     case 'category':
-      return t.category ?? ''
+      return guardFormula(t.category ?? '')
     case 'checkNumber':
       return t.checkNumber ?? ''
     default:

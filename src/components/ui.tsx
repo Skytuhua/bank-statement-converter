@@ -65,7 +65,7 @@ export function Field({
         {label}
       </label>
       {children}
-      {hint && <span className="text-xs text-muted-foreground/80">{hint}</span>}
+      {hint && <span className="text-xs text-muted-foreground">{hint}</span>}
     </div>
   )
 }
@@ -120,7 +120,7 @@ export function Toggle({
   id: string
 }) {
   return (
-    <label htmlFor={id} className="flex cursor-pointer items-center gap-2.5 select-none">
+    <label htmlFor={id} className="flex cursor-pointer items-center gap-3 select-none">
       <button
         id={id}
         type="button"

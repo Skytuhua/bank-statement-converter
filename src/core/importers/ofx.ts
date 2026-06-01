@@ -2,8 +2,25 @@
 // trailing the tag) and 2.x XML (closed tags) with one tolerant tokeniser.
 
 import type { AccountMeta, ParseResult, ParseWarning, Transaction } from '../model'
-import { parseDate } from '../normalize'
+import { parseDate, parseAmount } from '../normalize'
 import { makeFitid } from '../fitid'
+
+const ACCOUNT_TYPES: ReadonlySet<string> = new Set([
+  'CHECKING',
+  'SAVINGS',
+  'CREDITLINE',
+  'MONEYMRKT',
+  'CREDITCARD',
+])
+
+// OFX amounts are spec'd as '.'-decimal with no grouping; parse leniently but
+// without the locale guessing used for free-form CSV.
+const OFX_AMOUNT = {
+  decimalSeparator: '.' as const,
+  thousandsSeparator: '' as const,
+  stripCurrency: false,
+  flipSign: false,
+}
 
 /** Pull `<TAG>value` pairs from a block. Works for SGML and XML because the
  *  value is captured up to the next '<' or end of line (XML's closing tag also
@@ -43,7 +60,7 @@ export function importOfx(text: string): ParseResult {
   const acctId = text.match(/<ACCTID>([^<\r\n]*)/i)?.[1]?.trim()
   if (acctId) meta.accountId = acctId
   const acctType = text.match(/<ACCTTYPE>([^<\r\n]*)/i)?.[1]?.trim()?.toUpperCase()
-  if (acctType) meta.accountType = acctType as AccountMeta['accountType']
+  if (acctType && ACCOUNT_TYPES.has(acctType)) meta.accountType = acctType as AccountMeta['accountType']
   if (/<CREDITCARDMSGSRSV1>|<CCSTMTRS>/i.test(text)) meta.accountType = 'CREDITCARD'
 
   // Split into STMTTRN blocks.
@@ -62,14 +79,14 @@ export function importOfx(text: string): ParseResult {
       warnings.push({ row: i + 1, field: 'date', message: `Bad/missing DTPOSTED "${rawDate}"` })
     }
     const rawAmount = tv.get('TRNAMT') ?? ''
-    const amount = Number(rawAmount.replace(/,/g, ''))
-    if (!Number.isFinite(amount)) {
+    const amount = parseAmount(rawAmount, OFX_AMOUNT)
+    if (amount == null) {
       warnings.push({ row: i + 1, field: 'amount', message: `Bad/missing TRNAMT "${rawAmount}"` })
     }
 
     transactions.push({
       date: date ?? '',
-      amount: Number.isFinite(amount) ? amount : 0,
+      amount: amount ?? 0,
       payee: decodeEntities(tv.get('NAME') ?? tv.get('PAYEE') ?? ''),
       memo: decodeEntities(tv.get('MEMO') ?? ''),
       checkNumber: tv.get('CHECKNUM') || undefined,

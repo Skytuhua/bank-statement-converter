@@ -100,8 +100,9 @@ export function parseDate(raw: string, format: DateFormat = 'auto'): string | nu
     const nums = parts.map((p) => parseInt(p, 10))
     // 4-digit-first => YYYY M D
     if (parts[0].length === 4) return iso(nums[0], nums[1], nums[2])
-    // 4-digit-last => D/M/Y or M/D/Y; disambiguate by value.
-    if (parts[2].length === 4 || nums[2] > 31) {
+    // Otherwise the year is last (D/M/Y or M/D/Y), incl. 2-digit years
+    // (e.g. Quicken's "1/2/23"); disambiguate day vs month by value.
+    {
       const y = normYear(nums[2])
       if (nums[0] > 12 && nums[1] <= 12) return iso(y, nums[1], nums[0]) // DD/MM
       if (nums[1] > 12 && nums[0] <= 12) return iso(y, nums[0], nums[1]) // MM/DD

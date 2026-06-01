@@ -6,10 +6,16 @@ import { DEFAULT_ACCOUNT_META } from '../model'
 import { formatIsoDate } from '../normalize'
 
 function xml(s: string): string {
-  return s
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
+  return (
+    s
+      // Strip characters that are illegal in XML 1.0 (C0 controls except
+      // tab/LF/CR) so the output is always well-formed.
+      // eslint-disable-next-line no-control-regex
+      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+  )
 }
 
 function ofxDate(iso: string): string {

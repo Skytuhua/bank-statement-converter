@@ -67,6 +67,9 @@ export function LoadStep({ api }: { api: ConverterApi }) {
           type="file"
           accept={ACCEPTED_EXTENSIONS.join(',')}
           className="sr-only"
+          tabIndex={-1}
+          aria-hidden="true"
+          aria-label="Upload bank statement file"
           onChange={(e) => {
             const file = e.target.files?.[0]
             if (file) void actions.loadFile(file)

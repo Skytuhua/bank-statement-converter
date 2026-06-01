@@ -70,8 +70,17 @@ export function detectCsvDialect(text: string): CsvDialect {
     const max = Math.max(...counts)
     if (max === 0) continue
     // Reward consistency: how many rows share the modal column count.
-    const mode = counts.sort((a, b) => counts.filter((x) => x === b).length - counts.filter((x) => x === a).length)[0]
-    const consistent = counts.filter((c) => c === mode).length
+    const freq = new Map<number, number>()
+    for (const c of counts) freq.set(c, (freq.get(c) ?? 0) + 1)
+    let mode = counts[0]
+    let modeFreq = 0
+    for (const [value, n] of freq) {
+      if (n > modeFreq) {
+        modeFreq = n
+        mode = value
+      }
+    }
+    const consistent = freq.get(mode) ?? 0
     const score = consistent * 100 + max
     if (score > bestScore) {
       bestScore = score

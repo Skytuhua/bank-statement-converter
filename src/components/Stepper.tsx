@@ -33,14 +33,14 @@ export function Stepper({
           const active = step === current
           const reachable = i <= highestIdx
           return (
-            <li key={step} className="flex min-w-0 flex-1 items-center gap-1 sm:gap-2">
+            <li key={step} className="flex min-w-0 flex-1 items-center gap-1 last:flex-none sm:gap-2">
               <button
                 type="button"
                 disabled={!reachable}
                 aria-current={active ? 'step' : undefined}
                 onClick={() => reachable && onJump(step)}
                 className={cx(
-                  'group flex min-w-0 items-center gap-1.5 rounded-[var(--radius-input)] px-1.5 py-1.5 transition-colors duration-150 sm:gap-2 sm:px-2',
+                  'group flex min-w-0 items-center gap-1.5 rounded-[var(--radius-input)] px-1.5 py-1.5 transition-colors duration-150 sm:shrink-0 sm:gap-2 sm:px-2',
                   reachable ? 'cursor-pointer' : 'cursor-not-allowed',
                   active ? 'text-foreground' : 'text-muted-foreground',
                   reachable && !active && 'hover:text-foreground',

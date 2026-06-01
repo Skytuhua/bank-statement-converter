@@ -25,3 +25,6 @@ dist-ssr
 
 # Coverage
 coverage
+
+# Release build artifact (uploaded to GitHub Releases, not committed)
+*-dist.zip

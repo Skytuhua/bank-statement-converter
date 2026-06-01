@@ -4,6 +4,27 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] — 2026-06-01
+
+Usability polish — easier and clearer for first-time, non-technical users. No
+change to how files are converted.
+
+### Fixed
+- The progress steps at the top no longer show a cut-off **"Pre…"** on desktop —
+  the **Preview** step now reads in full.
+
+### Changed
+- **Clearer, more helpful messages when a file can't be used.** If you pick a
+  **PDF, spreadsheet (Excel/Numbers), image, or zip** by mistake, the app now
+  tells you exactly what happened and what to do instead (e.g. "look for Export
+  or Download and choose CSV or OFX") rather than a generic "unrecognised file".
+- Added a one-line plain-language hint under the **Delimiter** option explaining
+  it's "the character between columns — auto-detected".
+- A friendlier message when a file can't be read.
+
+### Added
+- Unit tests covering the new file-guidance messages.
+
 ## [1.0.0] — 2026-06-01
 
 First public release.

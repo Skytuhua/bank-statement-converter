@@ -4,6 +4,21 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] — 2026-06-02
+
+More usability polish for first-time, non-technical users. No change to how
+files are converted.
+
+### Fixed
+- The progress steps now read clearly on a phone too: the current step's name is
+  shown in full (so **"Preview"** is no longer shortened to **"Pre…"** on small
+  screens), with the other steps shown as numbered dots. Desktop is unchanged.
+
+### Changed
+- Added a plain-language line on the start screen — *"These are files your bank
+  exports — not PDF or scanned statements"* — so it's clear up front what to
+  load, before anyone tries a PDF or a photo of a statement by mistake.
+
 ## [1.0.1] — 2026-06-01
 
 Usability polish — easier and clearer for first-time, non-technical users. No
@@ -49,4 +64,6 @@ First public release.
   navigation, and `prefers-reduced-motion` support.
 - 198 automated tests, including a 125-case adversarial robustness suite.
 
+[1.0.2]: https://github.com/Skytuhua/bank-statement-converter/releases/tag/v1.0.2
+[1.0.1]: https://github.com/Skytuhua/bank-statement-converter/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Skytuhua/bank-statement-converter/releases/tag/v1.0.0

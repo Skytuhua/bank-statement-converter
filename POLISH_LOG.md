@@ -7,6 +7,56 @@ or how it converts files.
 
 ---
 
+## 2026-06-02 — Pass 2 (v1.0.1 → v1.0.2)
+
+Repeat run on the same product (nothing newer shipped by the builder, and no new
+commits since Pass 1). Per the routine's "audit only the delta" rule, this pass
+did **not** re-audit from scratch — it started from Pass 1's "Left for a future
+run" list and picked the two highest-value, lowest-risk items.
+
+### Changes shipped (all low-risk, behavior-preserving)
+1. **fix(stepper): the mobile progress steps no longer truncate "Preview" to
+   "Pre…".** Pass 1 fixed this on desktop only; at ≤375px all four step labels
+   were laid out as equal-width flex items with `truncate`, so the active label
+   still ellipsised (verified — "Pre…" on the Map step, and "Preview" itself was
+   clipped). Fix is **CSS/className only**: on mobile each step sizes to its
+   content and the row is centred (`flex-none` + `justify-center`), and only the
+   *active* step shows its text label — the others render as numbered dots. The
+   hidden labels stay in the accessibility tree (`sr-only sm:not-sr-only`), so
+   screen readers still announce every step. At `sm`+ the original equal-width
+   layout with full labels and connectors is exactly restored. Verified with
+   before/after screenshots on the Map **and** Preview steps (the active label
+   now reads in full), and re-confirmed no 375px horizontal overflow.
+
+2. **docs(load): a preemptive plain-language note on the start screen.** This was
+   Pass 1's top held-back candidate. Under the accepted-formats line we now show
+   *"These are files your bank exports — not PDF or scanned statements."* — so a
+   non-technical user understands what to load before they try a PDF or a photo
+   of a statement (the #1 mistake). Static copy only, grouped tightly with the
+   existing "Accepts …" line so it doesn't clutter the dropzone. Truthful — the
+   tool has never parsed PDFs/OCR (see README Limitations).
+
+### Verification
+- `npm run build` ✅ · `npm run lint` ✅ (clean) · `npm test` ✅ — 206 tests pass.
+- `scripts/a11y-check.mjs` ✅ — axe-clean in light **and** dark across all four
+  steps; no horizontal overflow at 375px.
+- `scripts/screenshots.mjs` ✅ — full Load→Map→Preview→Export flow driven in a
+  real browser, OFX download verified, **network audit PASS — zero external
+  requests** (privacy guarantee intact). README screenshots refreshed.
+- Two independent adversarial reviewers confirmed both changes are className/copy
+  only — no logic, control-flow, conversion, or accessibility regression, and no
+  new feature.
+
+### Left for a future run (candidates, not yet done)
+- Optional plain-language hints for "Decimal separator" / "Thousands separator"
+  (lower value — their example options, e.g. "1234.56" / "1,234", already
+  self-explain). Deliberately skipped to avoid churn.
+- The header/brand still shows the raw repo slug `bank-statement-converter` in a
+  monospace font; a friendlier display name could be considered, but it's the
+  established brand — still deliberately not touched.
+- The split debit/credit hint and per-row warnings copy are already clear; no
+  action needed unless the builder changes that area.
+
 ## 2026-06-01 — Pass 1 (v1.0.0 → v1.0.1)
 
 Starting point: a genuinely well-built, well-documented tool (clean README with

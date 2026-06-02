@@ -27,13 +27,19 @@ export function Stepper({
 
   return (
     <nav aria-label="Conversion steps" className="mx-auto max-w-[1120px] px-3 py-4 sm:px-6">
-      <ol className="flex items-center gap-1 sm:gap-2">
+      <ol className="flex items-center justify-center gap-1 sm:justify-normal sm:gap-2">
         {steps.map((step, i) => {
           const done = i < currentIdx
           const active = step === current
           const reachable = i <= highestIdx
           return (
-            <li key={step} className="flex min-w-0 flex-1 items-center gap-1 last:flex-none sm:gap-2">
+            <li
+              key={step}
+              // On mobile each step sizes to its content (only the active step
+              // shows a label), and the row is centred. At sm+ the steps share
+              // the width equally again (last one fixed) so the connectors span.
+              className="flex min-w-0 flex-none items-center gap-1 last:flex-none sm:flex-1 sm:gap-2"
+            >
               <button
                 type="button"
                 disabled={!reachable}
@@ -56,7 +62,17 @@ export function Stepper({
                 >
                   {done ? <CheckIcon width={13} height={13} /> : i + 1}
                 </span>
-                <span className="truncate text-[0.8125rem] font-medium sm:text-sm">{LABELS[step]}</span>
+                <span
+                  className={cx(
+                    'truncate text-[0.8125rem] font-medium sm:text-sm',
+                    // On mobile, show only the active step's label so the longest
+                    // one ("Preview") never truncates to "Pre…". Non-active labels
+                    // stay in the accessibility tree (sr-only) and reappear at sm+.
+                    !active && 'sr-only sm:not-sr-only',
+                  )}
+                >
+                  {LABELS[step]}
+                </span>
               </button>
               {i < steps.length - 1 && (
                 <span

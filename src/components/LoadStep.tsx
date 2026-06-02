@@ -58,8 +58,13 @@ export function LoadStep({ api }: { api: ConverterApi }) {
           <span className="text-base font-medium text-foreground">
             {state.parsing ? 'Reading file…' : 'Drop your statement here, or click to choose'}
           </span>
-          <span className="text-xs text-muted-foreground">
-            Accepts {ACCEPTED_EXTENSIONS.join(', ')}
+          <span className="flex flex-col items-center gap-1">
+            <span className="text-xs text-muted-foreground">
+              Accepts {ACCEPTED_EXTENSIONS.join(', ')}
+            </span>
+            <span className="text-[0.6875rem] text-muted-foreground/80">
+              These are files your bank exports — not PDF or scanned statements.
+            </span>
           </span>
         </button>
         <input

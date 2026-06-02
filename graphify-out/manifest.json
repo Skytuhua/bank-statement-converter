@@ -10,9 +10,9 @@
     "semantic_hash": "f4436a3d1532ce03bdc33a20b59f42fc"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\package.json": {
-    "mtime": 1780338603.736906,
-    "ast_hash": "cb9096522fead4797aa04d9974ec0996",
-    "semantic_hash": "cb9096522fead4797aa04d9974ec0996"
+    "mtime": 1780425381.7868848,
+    "ast_hash": "8003a26e7d907b0964a9598b69c7fc12",
+    "semantic_hash": "8003a26e7d907b0964a9598b69c7fc12"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\review\\network-audit.json": {
     "mtime": 1780338603.7394085,
@@ -50,14 +50,14 @@
     "semantic_hash": "44c309f9ed16c9dceb31580825d850c9"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\src\\components\\LoadStep.tsx": {
-    "mtime": 1780338603.7424128,
-    "ast_hash": "17342e379b0db57c2dddee0d4b3dfc07",
-    "semantic_hash": "17342e379b0db57c2dddee0d4b3dfc07"
+    "mtime": 1780425381.7878911,
+    "ast_hash": "c89923819c2287eb0e8d179e11aa5088",
+    "semantic_hash": "c89923819c2287eb0e8d179e11aa5088"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\src\\components\\MapStep.tsx": {
-    "mtime": 1780338603.743418,
-    "ast_hash": "f6a660ae09328b445d84696bb58f99c1",
-    "semantic_hash": "f6a660ae09328b445d84696bb58f99c1"
+    "mtime": 1780425381.7888944,
+    "ast_hash": "50fb120c4d42eefcbee3361460d95616",
+    "semantic_hash": "50fb120c4d42eefcbee3361460d95616"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\src\\components\\PreviewStep.tsx": {
     "mtime": 1780338603.743418,
@@ -65,9 +65,9 @@
     "semantic_hash": "cc57feab62f6b02130590c78ef5a43f4"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\src\\components\\Stepper.tsx": {
-    "mtime": 1780338603.744418,
-    "ast_hash": "dd94ab1c3173611cc80570b3897383a5",
-    "semantic_hash": "dd94ab1c3173611cc80570b3897383a5"
+    "mtime": 1780425381.7898927,
+    "ast_hash": "70ef15768661671e6248e711635c2bf5",
+    "semantic_hash": "70ef15768661671e6248e711635c2bf5"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\src\\components\\icons.tsx": {
     "mtime": 1780338603.744418,
@@ -180,9 +180,9 @@
     "semantic_hash": "8ac075d8abc8f3b3103515f3630069bb"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\src\\lib\\readFile.ts": {
-    "mtime": 1780338603.7849722,
-    "ast_hash": "aee21364507a7918604f00601ba9010f",
-    "semantic_hash": "aee21364507a7918604f00601ba9010f"
+    "mtime": 1780425381.79289,
+    "ast_hash": "23381ea422416085b3dd10b4a2187c5a",
+    "semantic_hash": "23381ea422416085b3dd10b4a2187c5a"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\src\\lib\\sample.ts": {
     "mtime": 1780338603.7871137,
@@ -200,9 +200,9 @@
     "semantic_hash": "2600b012a4afe6bd6703fe533470441c"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\src\\state\\useConverter.ts": {
-    "mtime": 1780338603.7903006,
-    "ast_hash": "b3994c2992a59a6416461921df7a034b",
-    "semantic_hash": "b3994c2992a59a6416461921df7a034b"
+    "mtime": 1780425381.7938912,
+    "ast_hash": "5c7b6e0ab1a30b943079e989911ce49d",
+    "semantic_hash": "5c7b6e0ab1a30b943079e989911ce49d"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\src\\test\\setup.ts": {
     "mtime": 1780338603.791893,
@@ -240,9 +240,9 @@
     "semantic_hash": "4c0758582a2d09ec54c2a4af2a7c591f"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\CHANGELOG.md": {
-    "mtime": 1780338603.6997254,
-    "ast_hash": "7f31fddaf4d5f88bcfd585abd4524052",
-    "semantic_hash": "7f31fddaf4d5f88bcfd585abd4524052"
+    "mtime": 1780425381.7688603,
+    "ast_hash": "23053439e4547f8468f2c958110deca9",
+    "semantic_hash": "23053439e4547f8468f2c958110deca9"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\DESIGN_NOTES.md": {
     "mtime": 1780338603.7009096,
@@ -305,44 +305,44 @@
     "semantic_hash": "d44b3fd23b0fc5d77fa63a48d098b3f0"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\docs\\screenshots\\01-load-desktop.png": {
-    "mtime": 1780338603.7246768,
-    "ast_hash": "c068eb89080e3b27f944f11610163e75",
-    "semantic_hash": "c068eb89080e3b27f944f11610163e75"
+    "mtime": 1780425381.7708638,
+    "ast_hash": "899594d2f27e97369ddceb725c22e880",
+    "semantic_hash": "899594d2f27e97369ddceb725c22e880"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\docs\\screenshots\\02-map-desktop.png": {
-    "mtime": 1780338603.7266924,
-    "ast_hash": "aa97b8d8264624976d4197091f077276",
-    "semantic_hash": "aa97b8d8264624976d4197091f077276"
+    "mtime": 1780425381.7728639,
+    "ast_hash": "e7aea44a683d66bb44e540a8ba87fb7c",
+    "semantic_hash": "e7aea44a683d66bb44e540a8ba87fb7c"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\docs\\screenshots\\03-preview-desktop.png": {
-    "mtime": 1780338603.7276964,
-    "ast_hash": "0ea00bbf06ed434f39440eac7c45a285",
-    "semantic_hash": "0ea00bbf06ed434f39440eac7c45a285"
+    "mtime": 1780425381.7748659,
+    "ast_hash": "1d4a7f76ec06be559ee722e20525d867",
+    "semantic_hash": "1d4a7f76ec06be559ee722e20525d867"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\docs\\screenshots\\04-export-desktop.png": {
-    "mtime": 1780338603.7286918,
-    "ast_hash": "e706e882f9241e1018ee935ec984d1b3",
-    "semantic_hash": "e706e882f9241e1018ee935ec984d1b3"
+    "mtime": 1780425381.7763705,
+    "ast_hash": "09d8d735fda49672ea14bea1363a17cc",
+    "semantic_hash": "09d8d735fda49672ea14bea1363a17cc"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\docs\\screenshots\\05-export-downloaded-desktop.png": {
-    "mtime": 1780338603.7308784,
-    "ast_hash": "aecbbef5c693c209441ac8ee05a317c8",
-    "semantic_hash": "aecbbef5c693c209441ac8ee05a317c8"
+    "mtime": 1780425381.7783751,
+    "ast_hash": "2de5f73200f86720d0ec670c9e966c90",
+    "semantic_hash": "2de5f73200f86720d0ec670c9e966c90"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\docs\\screenshots\\06-export-dark-desktop.png": {
-    "mtime": 1780338603.731877,
-    "ast_hash": "dd948718904e9e0119c9b53c1d03e4dc",
-    "semantic_hash": "dd948718904e9e0119c9b53c1d03e4dc"
+    "mtime": 1780425381.779379,
+    "ast_hash": "528b4d686d5ad2fd825709076fa02744",
+    "semantic_hash": "528b4d686d5ad2fd825709076fa02744"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\docs\\screenshots\\07-load-mobile.png": {
-    "mtime": 1780338603.7328818,
-    "ast_hash": "f61eda66ac4846cdb32ce63a2cc18d72",
-    "semantic_hash": "f61eda66ac4846cdb32ce63a2cc18d72"
+    "mtime": 1780425381.781379,
+    "ast_hash": "2659520ccc133b7d356bff223933ddf0",
+    "semantic_hash": "2659520ccc133b7d356bff223933ddf0"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\docs\\screenshots\\08-map-mobile.png": {
-    "mtime": 1780338603.7338777,
-    "ast_hash": "97aa82af775a22d3410417eba0e433cc",
-    "semantic_hash": "97aa82af775a22d3410417eba0e433cc"
+    "mtime": 1780425381.7843802,
+    "ast_hash": "afac4ea33170991205e2712888de65b0",
+    "semantic_hash": "afac4ea33170991205e2712888de65b0"
   },
   "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\docs\\screenshots\\09-live-pages-preview.png": {
     "mtime": 1780338603.7338777,
@@ -353,5 +353,25 @@
     "mtime": 1780338603.737905,
     "ast_hash": "7c9a2de3e50bf6a8d141590d74809ead",
     "semantic_hash": "7c9a2de3e50bf6a8d141590d74809ead"
+  },
+  "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\.claude\\settings.json": {
+    "mtime": 1780339027.0082943,
+    "ast_hash": "5d6ecd96cf065b16e8bb9fbf5d7d8f0d",
+    "semantic_hash": "5d6ecd96cf065b16e8bb9fbf5d7d8f0d"
+  },
+  "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\src\\lib\\__tests__\\readFile.test.ts": {
+    "mtime": 1780425381.7918913,
+    "ast_hash": "624c16cfd10834bc69071ffbff75eece",
+    "semantic_hash": "624c16cfd10834bc69071ffbff75eece"
+  },
+  "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\CLAUDE.md": {
+    "mtime": 1780339027.0072882,
+    "ast_hash": "8a6643a420fdad6bfb583523bc6cef16",
+    "semantic_hash": "8a6643a420fdad6bfb583523bc6cef16"
+  },
+  "C:\\Users\\user\\Documents\\Claude\\mission-control\\state\\graphs\\_product_clones\\bank-statement-converter\\POLISH_LOG.md": {
+    "mtime": 1780425381.7688603,
+    "ast_hash": "d2a75c0f89920829f97213be2bb3b292",
+    "semantic_hash": "d2a75c0f89920829f97213be2bb3b292"
   }
 }
